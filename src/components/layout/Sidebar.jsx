@@ -87,7 +87,7 @@ function Sidebar({collapsed, /* onToggle */ currentPage, onPageChange}) {
   return (
     <div className={`${
       collapsed ? "w-20" : "72"
-      } transition duration-300 ease-in-out bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl
+      } transition-all duration-300 ease-in-out bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl
       border-r border-slate-200/50 dark:border-slate-700/50 flex flex-col relative z-10`}
     >
         {/* Logo */}
@@ -130,12 +130,11 @@ function Sidebar({collapsed, /* onToggle */ currentPage, onPageChange}) {
               <div className='flex items-center space-x-3'>
                 <item.icon className={`w-5 h-5`}/>
                 {/* rendu conditionnel */}
-                <>
+                
                   {!collapsed && (
+                    <>
                     <span className='font-meduim ml-2'>{item.label}</span>
-                  )}
-
-                  {item.badge && (
+                    {item.badge && (
                     <span className='px-2 py-1 text-xs bg-red-500 text-white- rounded-full'>
                       {item.badge}
                     </span>
@@ -147,7 +146,11 @@ function Sidebar({collapsed, /* onToggle */ currentPage, onPageChange}) {
                       </span>
                     )}
                   </span>
-                </>
+                  </>
+                  )}
+
+                  
+                
               </div>
               {!collapsed && item.submenu && 
               <ChevronDown className={`w-4 h-4 transition-transform`}/>} 
@@ -171,21 +174,21 @@ function Sidebar({collapsed, /* onToggle */ currentPage, onPageChange}) {
 
       {/* Profil Utilisateur*/}
       {!collapsed && <div className='p-4 border-t border-slate-200/50 dark:border-slate-700/50'>
-          <div className='flex items-center space-x-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50'>
-            <img 
-              src="https://i.pinimg.com/736x/68/31/21/683121c580c8a2487664791da0ffb205.jpg" 
-              alt="user" 
-              className='w-10 h-10 rounded-full ring-2 ring-blue-500'
-              />
+        <div className='flex items-center space-x-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50'>
+          <img 
+            src="https://i.pinimg.com/736x/68/31/21/683121c580c8a2487664791da0ffb205.jpg" 
+            alt="user" 
+            className='w-10 h-10 rounded-full ring-2 ring-blue-500'
+            />
+            <div className='flex-1 min-w-0'>
               <div className='flex-1 min-w-0'>
-                <div className='flex-1 min-w-0'>
-                  <p className='text-sm font-medium text-slate-800 dark:text-white truncate'>Ange Gaetan KOROGO </p>
-                  <p className='text-sx text-slate-500 dark:text-slate-400 truncate'>Administrateur</p>
-                </div>
-
+                <p className='text-sm font-medium text-slate-800 dark:text-white truncate'>Ange Gaetan KOROGO </p>
+                <p className='text-sx text-slate-500 dark:text-slate-400 truncate'>Administrateur</p>
               </div>
+
+            </div>
           </div>
-      </div>
+        </div>
       }
       
     </div>
